@@ -1,1 +1,1 @@
-# Flask-Graph-QL
+## A Flask-GraphQL project facilitating registration and login ##
