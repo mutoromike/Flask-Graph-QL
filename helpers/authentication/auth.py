@@ -29,7 +29,8 @@ def register_details(**kwargs):
         return 'Password length should be more than 5 characters, '\
             'have one lowercase, uppercase, number and special character'
     else:
-        return data
+        return kwargs
+
 
 def register(**kwargs):
     """Method to handle user registration"""
@@ -41,7 +42,7 @@ def register(**kwargs):
     email = kwargs['email']
     password = kwargs['password']
     new_user = register_details(**kwargs)
-    if new_user is not data:
+    if new_user is not kwargs:
         # Validate register details
         return jsonify({"message": new_user}), 403
     if user_name:
@@ -57,7 +58,7 @@ def register(**kwargs):
         user = User(username=username, email=email, password=password)
         user.save()
         response = {'message': 'You registered successfully. Please log in.'}
-        # return a response notifying the user that they registered successfully            
+        # return a response notifying the user that they registered successfully
     except Exception as e:
         # An error occured, therefore return a string message containing the error
         response = {'message': str(e)}

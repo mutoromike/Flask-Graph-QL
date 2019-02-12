@@ -12,7 +12,6 @@ class User(Base, Utility):
     email = Column(String, nullable=False, unique=True)
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
-    # roles = relationship('Role', secondary='users_roles')
 
     def __init__(self, **kwargs):
         validate_empty_fields(**kwargs)
